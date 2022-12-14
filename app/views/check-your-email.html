@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-l govuk-!-margin-top-0 govuk-!-margin-bottom-3">Check your email</h1>
+
+<div class="govuk-inset-text">
+  We have sent an email to <span class="govuk-body govuk-!-font-weight-bold permit-reflow">{{data['email']}}</span>
+</div>
+
+<p class="govuk-body">The email contains a 6 digit security code.</p>
+<p class="govuk-body">Your email might take a few minutes to arrive. If you do not get an email, check your spam folder.</p>
+<p class="govuk-body">The code will expire after 2 hours.</p>
+
+<form action="/create-password" method="post" novalidate="novalidate">
+
+  {{ govukInput({
+  label: {
+      text: "Enter the 6 digit security code"
+  },
+  id: "code",
+  name: "code",
+  classes: "govuk-input--width-10",
+  inputmode: "numeric",
+  spellcheck: false,
+  autocomplete: "one-time-code",
+  errorMessage: {
+      text: errors['code'].text
+  } if (errors['code'])})
+}}
+
+  {% set detailsHTML %}
+  <p class="govuk-body">
+    We can
+    <a href="#" class="govuk-link" rel="noreferrer noopener">send you the code again</a>
+    or
+    <a href="#" class="govuk-link" rel="noreferrer noopener">use a different email address</a>.
+  </p>
+  {% endset %}
+
+  {{ govukDetails({
+summaryText: 'Problems with the code?',
+html: detailsHTML
+}) }}
+
+  {{ govukButton({
+  "text": "Continue",
+  "type": "Submit",
+  "preventDoubleClick": true
+}) }}
+
+</form>
+
+{% endblock %}

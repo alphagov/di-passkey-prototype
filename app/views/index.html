@@ -1,0 +1,79 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Home – {{serviceName}} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds ">
+              
+  
+
+
+  
+    <h1 class="govuk-heading-l govuk-!-margin-top-0 govuk-!-margin-bottom-3">Create a GOV.UK account or sign in</h1>
+  
+
+  <p class="govuk-body">You’ll need:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>an email address</li>
+    
+      <li>a way to get security codes - this can be a UK mobile phone number or an authenticator app</li>
+    
+  </ul>
+  
+    
+    <div class="govuk-inset-text">
+  
+    The GOV.UK account is also available 
+    <a href="?lng=cy" class="govuk-link" rel="noreferrer">
+      in Welsh
+      <span lang="cy">(Cymraeg)</span></a>.
+    
+</div>
+
+  
+
+  <form action="/sign-in-or-create" method="post" novalidate="novalidate">
+
+    <input type="hidden" name="supportInternationalNumbers" value="">
+
+    
+
+  
+    
+  
+<a role="button" draggable="false" class="govuk-button" id="create-account-link" href="/enter-email-create">Create a GOV.UK account</a>
+
+
+    <p class="govuk-body">
+      If you already have a GOV.UK account you can
+      <a href="/enter-email" class="govuk-link" id="sign-in-link">sign in</a>.
+    </p>
+
+  </form>
+
+  <details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      About GOV.UK accounts
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    
+<p class="govuk-body">GOV.UK accounts are new. At the moment you can only use your GOV.UK account with a few services.</p>
+<p class="govuk-body">GOV.UK accounts are currently separate from other government accounts (for example Government Gateway or Universal Credit).</p>
+<p class="govuk-body">In the future, you’ll be able to use your GOV.UK account to sign in to most services on GOV.UK.</p>
+
+  </div>
+</details>
+
+
+
+            </div>
+
+</div>
+
+{% endblock %}

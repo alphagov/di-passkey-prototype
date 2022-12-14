@@ -1,0 +1,36 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-l govuk-!-margin-top-0 govuk-!-margin-bottom-3">You've created your GOV.UK account</h1>
+
+<p class="govuk-body">Now continue to use the {{data['relying-party']}} service.</p>
+
+<form id="form-tracking" action="/account-created" method="post" novalidate>
+
+    {{ govukButton({
+        "text": "Continue",
+        "type": "Submit",
+        "preventDoubleClick": true
+    }) }}
+
+{% if serviceType === 'OPTIONAL' %}
+    <h1 class="govuk-body govuk-bold">{{'pages.accountCreated.progressSaved' | translate}}</h1>
+
+    {{ govukButton({
+        "text": "pages.accountCreated.continue" | translate,
+        "preventDoubleClick": true
+    }) }}
+
+    <br>
+
+    <a href="{{ logoutUrl }}" class="govuk-link govuk-body">
+        {{'pages.accountCreated.signOut' | translate}}
+    </a>
+{% endif %}
+</form>
+
+{% endblock %}
